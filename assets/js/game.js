@@ -4,8 +4,14 @@ var playerAttack = 10;
 var playerMoney = 10;
 
 var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
-var enemyHealth = 50;
+var enemyHealth = Math.floor(Math.random() * 21) + 40;
 var enemyAttack = 12;
+//function to generate a random numerc value
+var randomNumber = fucntion () {
+var value = Math.floor(Math.random() * 21) + 40;
+
+return value;
+}
 
 console.log(enemyNames);
 console.log(enemyNames.length);
@@ -27,14 +33,14 @@ var fight = function(enemyName) {
       if (confirmSkip) {
         window.alert(playerName + ' has decided to skip this fight. Goodbye!');
         // subtract money from playerMoney for skipping
-        playerMoney = playerMoney - 10;
+        playerMoney = Math.max(0, playerMoney - 10);
         console.log("playerMoney", playerMoney);
         break;
       }
     }
 
     // remove enemy's health by subtracting the amount set in the playerAttack variable
-    enemyHealth = enemyHealth - playerAttack;
+    enemyHealth = Math.max(0, enemyHealth - playerAttack);
     console.log(
       playerName + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemyHealth + ' health remaining.'
     );
@@ -53,7 +59,7 @@ var fight = function(enemyName) {
     }
 
     // remove players's health by subtracting the amount set in the enemyAttack variable
-    playerHealth = playerHealth - enemyAttack;
+    playerHealth = Math.max(0, playerHealth - enemyAttack);
     console.log(
       enemyName + ' attacked ' + playerName + '. ' + playerName + ' now has ' + playerHealth + ' health remaining.'
     );
